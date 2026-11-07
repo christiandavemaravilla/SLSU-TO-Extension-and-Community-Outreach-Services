@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Extension and Community Outreach Services | SLSU Tomas Oppus Campus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#0b4f9c;
+    --green-dark:#083a78;
+    --green-mid:#1a67c4;
+    --blue:#1668b8;
+    --yellow:#f9c423;
+    --ink:#1b2a35;
+    --muted:#6b7a85;
+    --line:#e3e9ee;
+    --bg:#f4f7f9;
+    --card:#ffffff;
+    --radius:10px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.4}
+  a{color:inherit;text-decoration:none}
+  svg{display:block}
+  .wrap{max-width:1536px;margin:0 auto}
+
+  /* ---------- Placeholder images ---------- */
+  .ph{
+    background:
+      linear-gradient(135deg,rgba(255,255,255,.35) 25%,transparent 25%) 0 0/16px 16px,
+      linear-gradient(135deg,#d9e2e8,#c4d0d9);
+    position:relative;overflow:hidden;
+  }
+
+  /* ---------- Top header ---------- */
+  .topbar{background:#fff;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 48px}
+  .brand{display:flex;align-items:center;gap:18px;min-width:0}
+  .logo{width:66px;height:66px;border-radius:50%;border:3px solid var(--green);flex:none;background:#eef2f5}
+  .uni{font-family:'Cormorant Garamond',serif;font-variant:small-caps;font-size:19px;line-height:1.15;letter-spacing:.4px;color:#222;white-space:nowrap}
+  .divider{width:2px;height:48px;background:var(--green-dark);margin:0 12px;flex:none}
+  .site-title h1{font-family:'Montserrat',sans-serif;font-weight:700;font-size:28px;letter-spacing:.3px;color:#1a2a33;line-height:1.1}
+  .site-title p{text-align:center;color:#5d6b75;font-size:17px;letter-spacing:.4px;margin-top:4px}
+  .site-title p span{margin:0 10px}
+  .search{display:flex;width:300px;flex:none;border:1px solid #cfd8df;border-radius:8px;overflow:hidden;background:#fff}
+  .search .ico{display:flex;align-items:center;padding:0 10px;color:#7b8892}
+  .search input{flex:1;border:0;outline:0;font:inherit;font-size:14px;padding:12px 0;min-width:0}
+  .search button{border:0;background:var(--blue);color:#fff;width:40px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+
+  /* ---------- Nav ---------- */
+  nav{background:var(--green)}
+  nav ul{list-style:none;display:flex;justify-content:space-between;padding:0 48px;max-width:1536px;margin:0 auto}
+  nav li a{display:flex;align-items:center;gap:6px;color:#fff;font-size:16px;padding:18px 14px;position:relative;white-space:nowrap}
+  nav li a.active{font-weight:700}
+  nav li a.active::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:4px;background:var(--yellow);border-radius:3px 3px 0 0}
+  nav li a:hover{background:rgba(255,255,255,.08)}
+  nav .caret{width:10px;height:10px}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;height:310px;overflow:hidden;
+    background:linear-gradient(100deg,#eaf4fa 0%,#cfe6f4 45%,#b7d9ee 100%)}
+  .hero-photo{position:absolute;left:34%;right:12%;top:0;bottom:0}
+  .hero-photo.ph{background:
+      linear-gradient(135deg,rgba(255,255,255,.3) 25%,transparent 25%) 0 0/16px 16px,
+      linear-gradient(135deg,#cdd9e0,#b5c5d0);
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 100%);
+            mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 100%)}
+  .hero-photo span,.thumb span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#7d8d99;font-size:13px;letter-spacing:.5px}
+  .hero-green{position:absolute;right:-8%;top:-30%;width:42%;height:170%;background:linear-gradient(160deg,#1a6fcf,#0a3f86);border-radius:50% 0 0 50% / 50% 0 0 50%;opacity:.96}
+  .hero-wave{position:absolute;left:0;right:0;bottom:-1px;height:70px}
+  .hero-content{position:relative;z-index:2;padding:36px 48px;max-width:640px}
+  .hero h2{font-family:'Montserrat',sans-serif;font-weight:800;font-size:46px;letter-spacing:.5px;color:var(--green);line-height:1}
+  .hero .script{font-family:'Great Vibes',cursive;font-size:58px;color:var(--green-dark);line-height:1.05;margin:2px 0 6px}
+  .hero p.lead{font-size:18px;color:#273842;max-width:520px;line-height:1.45}
+  .btn{display:inline-flex;align-items:center;gap:10px;margin-top:20px;background:var(--yellow);color:#1b2a35;font-weight:600;padding:12px 26px;border-radius:30px;font-size:16px;box-shadow:0 2px 6px rgba(0,0,0,.15);transition:transform .15s}
+  .btn:hover{transform:translateY(-1px)}
+  .pillars{position:absolute;z-index:3;right:5%;top:0;bottom:0;width:260px;color:#fff;text-align:center;font-weight:500;font-size:15px}
+  .pillar{position:absolute;display:flex;flex-direction:column;align-items:center;gap:8px;line-height:1.15}
+  .pillar .ring{width:66px;height:66px;border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .pillar.p1{left:0;top:100px}
+  .pillar.p2{right:0;top:30px}
+  .pillar.p3{right:0;top:160px}
+  .pillar.p3 .ring{border:0;height:50px}
+
+  /* ---------- Stats ---------- */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:14px 20px 0}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:12px 18px;display:flex;align-items:center;gap:18px}
+  .stat .badge{width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;flex:none}
+  .stat h4{font-size:15px;font-weight:500;color:#2d3c46}
+  .stat .num{font-size:30px;font-weight:700;line-height:1.1}
+  .stat small{color:var(--muted);font-size:13px}
+
+  /* ---------- Main grid ---------- */
+  .main{display:grid;grid-template-columns:302px 1fr 452px;gap:12px;padding:12px 20px 40px;align-items:start}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px}
+  .panel + .panel{margin-top:12px}
+  .panel h3{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:600;color:#12303f}
+  .panel h3 .hi{color:var(--blue)}
+  .panel .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+  .view-all{font-size:12px;color:var(--blue);text-decoration:underline;font-weight:500}
+
+  /* Quick links */
+  .quick h3{margin:4px 0 12px 4px;font-size:18px}
+  .quick a{display:flex;align-items:center;gap:14px;background:#f1f4f8;border-radius:8px;padding:14px 14px;margin-bottom:8px;font-size:15px;color:#22323d;transition:background .15s}
+  .quick a:hover{background:#e4ebf3}
+  .quick a svg{color:var(--blue);flex:none}
+
+  /* Program domains */
+  .domains{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+  .domain{border-radius:8px;height:114px;padding:10px 4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;font-size:12.5px;line-height:1.2;color:#1f2d36;font-weight:500;transition:transform .15s}
+  .domain:hover{transform:translateY(-2px)}
+  .d1{background:#8fd6a6}.d1 svg{color:#0d6b3a}
+  .d2{background:#8dc7f0}.d2 svg{color:#1862a8}
+  .d3{background:#f8df6f}.d3 svg{color:#c47a0a}
+  .d4{background:#f8a99d}.d4 svg{color:#d62c2c}
+  .d5{background:#cdbaf3}.d5 svg{color:#6a38c2}
+  .d6{background:#8fe0e0}.d6 svg{color:#0a6f78}
+
+  /* Featured */
+  .carousel{position:relative}
+  .track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 30px)/4);gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .track::-webkit-scrollbar{display:none}
+  .fcard{scroll-snap-align:start;min-width:0}
+  .thumb{height:100px;border-radius:6px 6px 0 0}
+  .fcard h5{font-size:14.5px;font-weight:600;margin:8px 0 2px;line-height:1.2}
+  .fcard p{font-size:12.5px;color:var(--muted);line-height:1.3}
+  .arrow{position:absolute;top:50px;width:30px;height:30px;border-radius:50%;background:#fff;border:1px solid #d5dde3;box-shadow:0 1px 4px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2}
+  .arrow.l{left:-10px}.arrow.r{right:-10px}
+
+  /* News */
+  .news-item{display:flex;gap:12px;padding:8px 0;border-bottom:1px solid var(--line)}
+  .news-item:last-child{border:0;padding-bottom:0}
+  .news-item .thumb{width:126px;height:66px;border-radius:4px;flex:none}
+  .news-item h6{font-size:13.5px;font-weight:600;line-height:1.25}
+  .news-item time{display:block;font-size:12.5px;color:var(--muted);margin:2px 0}
+  .news-item p{font-size:12.5px;color:#4b5a65;line-height:1.3}
+
+  /* Documents */
+  .docs a{display:flex;align-items:center;gap:14px;padding:10px 6px;border-bottom:1px solid var(--line);font-size:13.5px}
+  .docs a:last-child{border:0;padding-bottom:2px}
+  .docs a:hover{background:#f6f9fb}
+  .ft{width:20px;height:22px;border-radius:3px;color:#fff;font-size:7px;font-weight:700;display:flex;align-items:flex-end;justify-content:center;padding-bottom:3px;flex:none}
+  .ft.pdf{background:#e5322d}.ft.doc{background:#2b6cd4}.ft.xls{background:#1f8a4c}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:1280px){
+    .main{grid-template-columns:260px 1fr}
+    .main .right{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .main .right .panel+.panel{margin-top:0}
+    .uni{font-size:16px}.site-title h1{font-size:22px}
+    nav ul{overflow-x:auto;padding:0 20px}
+  }
+  @media (max-width:960px){
+    .topbar{flex-wrap:wrap;padding:14px 20px}
+    .search{width:100%}
+    .divider{display:none}
+    .stats{grid-template-columns:1fr 1fr}
+    .main{grid-template-columns:1fr}
+    .main .right{grid-template-columns:1fr}
+    .domains{grid-template-columns:repeat(3,1fr)}
+    .pillars,.hero-photo{display:none}
+    .hero-green{width:60%;opacity:.25}
+    .hero h2{font-size:34px}.hero .script{font-size:44px}
+    .track{grid-auto-columns:calc((100% - 10px)/2)}
+  }
+  @media (max-width:560px){
+    .stats{grid-template-columns:1fr}
+    .brand{flex-wrap:wrap}.uni{white-space:normal}
+    .domains{grid-template-columns:repeat(2,1fr)}
+    .track{grid-auto-columns:80%}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="topbar">
+  <div class="brand">
+    <div class="logo ph" role="img" aria-label="University logo placeholder"></div>
+    <div class="uni">Southern Leyte State University<br>Tomas Oppus Campus</div>
+    <div class="divider"></div>
+    <div class="site-title">
+      <h1>EXTENSION AND COMMUNITY OUTREACH SERVICES</h1>
+      <p>Engage <span>•</span> Empower <span>•</span> Transform</p>
+    </div>
+  </div>
+  <form class="search" onsubmit="return false">
+    <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span>
+    <input type="text" placeholder="Search this site" aria-label="Search this site">
+    <button type="submit" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
+  </form>
+</header>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <ul>
+    <li><a href="#" class="active">Home</a></li>
+    <li><a href="#">About Us <svg class="caret" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3.5l3 3 3-3"/></svg></a></li>
+    <li><a href="#">Programs and Projects <svg class="caret" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3.5l3 3 3-3"/></svg></a></li>
+    <li><a href="#">Extension Quality Management <svg class="caret" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3.5l3 3 3-3"/></svg></a></li>
+    <li><a href="#">Partners and Linkages <svg class="caret" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3.5l3 3 3-3"/></svg></a></li>
+    <li><a href="#">Resources <svg class="caret" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3.5l3 3 3-3"/></svg></a></li>
+    <li><a href="#">Reports <svg class="caret" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3.5l3 3 3-3"/></svg></a></li>
+    <li><a href="#">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-photo ph" role="img" aria-label="Campus building photo placeholder"><span>Hero image placeholder</span></div>
+  <div class="hero-green"></div>
+  <svg class="hero-wave" viewBox="0 0 1536 70" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 70V48C140 70 300 66 470 40 600 20 700 18 820 38 960 62 1100 70 1536 56V70Z" fill="#1565c0"/>
+    <path d="M0 70V58C180 74 330 70 520 48 700 28 780 34 900 54 1000 70 1100 70 1536 66V70Z" fill="#fff"/>
+  </svg>
+
+  <div class="hero-content">
+    <h2>COMMUNITY PARTNERS</h2>
+    <div class="script">for a Better Tomorrow</div>
+    <p class="lead">Building stronger communities through relevant, responsive and sustainable extension programs.</p>
+    <a class="btn" href="#">Learn More
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar p1">
+      <div class="ring"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-9 6-14 15-14 0 9-5 15-13 15"/><path d="M5 19c3-5 6-8 10-10"/></svg></div>
+      Sustainable<br>Communities
+    </div>
+    <div class="pillar p2">
+      <div class="ring" style="background:rgba(255,255,255,.12)"><svg width="38" height="38" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="6" r="2.6"/><circle cx="5.5" cy="9.5" r="2"/><circle cx="18.5" cy="9.5" r="2"/><path d="M12 10c-3 0-5 1.8-5 4.5V17h10v-2.5C17 11.8 15 10 12 10z"/><path d="M5.5 12c-2 0-3.5 1.3-3.5 3.2V17h4v-2.5c0-1 .3-1.9.8-2.6-.4-.1-.8-.1-1.3-.1zM18.5 12c-.5 0-.9 0-1.3.1.5.7.8 1.6.8 2.6V17h4v-1.8c0-1.9-1.5-3.2-3.5-3.2z"/></svg></div>
+      People<br>Engagement
+    </div>
+    <div class="pillar p3">
+      <div class="ring"><svg width="46" height="46" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="14" width="4.5" height="7" rx=".6"/><rect x="9.7" y="10" width="4.5" height="11" rx=".6"/><rect x="16.5" y="6" width="4.5" height="15" rx=".6"/><path d="M4 9l6-4.5 3 2L20 1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      Inclusive<br>Development
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats wrap">
+  <div class="stat">
+    <div class="badge" style="background:#2f8fe0"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="2.8"/><circle cx="5" cy="9" r="2.2"/><circle cx="19" cy="9" r="2.2"/><path d="M12 11.5c-3.2 0-5.5 2-5.5 4.8V19h11v-2.7c0-2.8-2.3-4.8-5.5-4.8z"/><path d="M5 12c-2.2 0-4 1.4-4 3.5V18h4v-2c0-1.4.5-2.6 1.4-3.5C6 12.2 5.5 12 5 12zM19 12c-.5 0-1 .2-1.4.5.9.9 1.4 2.1 1.4 3.5v2h4v-2.5c0-2.1-1.8-3.5-4-3.5z"/></svg></div>
+    <div><h4>Total Extension Programs</h4><div class="num">24</div><small>as of 2026</small></div>
+  </div>
+  <div class="stat">
+    <div class="badge" style="background:#1668b8"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></div>
+    <div><h4>Partner Communities</h4><div class="num">18</div><small>LGUs, Schools, CSOs</small></div>
+  </div>
+  <div class="stat">
+    <div class="badge" style="background:#7a3fc4"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h8l5 5v15H6z"/><path d="M14 2v5h5M9 12h7M9 16h7"/></svg></div>
+    <div><h4>Beneficiaries Reached</h4><div class="num">5,230</div><small>Individuals and Groups</small></div>
+  </div>
+  <div class="stat">
+    <div class="badge" style="background:#f07a1a"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 11l4-4 4 1 3-2 5 4 4-1"/><path d="M6 7l-4 4 6 7 2-1M22 10l-4 8-4 2-6-5"/><path d="M10 18l2 2"/></svg></div>
+    <div><h4>Active Partners</h4><div class="num">12</div><small>LGUs, NGAs, and Private Sector</small></div>
+  </div>
+</section>
+
+<!-- ============ MAIN ============ -->
+<main class="main wrap">
+
+  <!-- Quick Links -->
+  <aside class="panel quick">
+    <h3>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1668b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></svg>
+      Quick Links
+    </h3>
+    <a href="#"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5c3-1 6-1 9 1 3-2 6-2 9-1v14c-3-1-6-1-9 1-3-2-6-2-9-1z"/></svg>Extension Manual and Policies</a>
+    <a href="#"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h8l5 5v15H6z"/><path d="M9 13h7M9 17h7M9 9h3"/></svg>Forms and Templates</a>
+    <a href="#"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 6-7"/></svg>Monitoring and Evaluation</a>
+    <a href="#"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="8" r="3.2"/><circle cx="17.5" cy="9" r="2.5"/><path d="M9 12.5c-3.5 0-6 2-6 5V20h12v-2.5c0-3-2.5-5-6-5zM17.5 13c-.7 0-1.3.1-1.9.3 1.2 1 1.9 2.4 1.9 4.2V20h4v-2c0-2.5-1.8-5-4-5z"/></svg>Training and Capacity Building</a>
+    <a href="#"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>Community Needs Assessment</a>
+    <a href="#"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 4h18v16H3z" opacity=".95"/><circle cx="8.5" cy="9" r="1.8" fill="#f1f4f8"/><path d="M4 19l5.5-6 3.5 4 3-3 4 5z" fill="#f1f4f8"/></svg>Photo and Video Gallery</a>
+    <a href="#" style="margin-bottom:0"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a1.6 1.6 0 0 1 1.6 1.6v.7C16.4 5 18 7.4 18 10.5V15l2 2.5V19H4v-1.5L6 15v-4.5C6 7.4 7.600 5 10.400 4.300v-.7A1.600 1.600 0 0 1 12 2zm-2 18h4a2 2 0 0 1-4 0z"/></svg>Announcements</a>
+  </aside>
+
+  <!-- Center column -->
+  <div class="center">
+    <section class="panel">
+      <div class="head"><h3><svg width="22" height="22" viewBox="0 0 24 24" fill="#1668b8"><circle cx="12" cy="6.5" r="3"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M12 11c-3.500 0-6 2.200-6 5V19h12v-3c0-2.800-2.500-5-6-5z"/></svg>Program Domains</h3></div>
+      <div class="domains">
+        <a href="#" class="domain d1">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22v-9"/><path d="M12 13C12 8 8.500 5.500 4 6c0 4.500 3 7.500 8 7zM12 15c0-4 3-7 8-7 0 4.500-3 7.500-8 7z"/><path d="M11 22h2v-8h-2z"/></svg>
+          Environment<br>and Sustainability</a>
+        <a href="#" class="domain d2">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="currentColor"><path d="M2 5c3.500-1 7-.5 10 1.500V20c-3-2-6.500-2.500-10-1.500zM22 5c-3.500-1-7-.5-10 1.500V20c3-2 6.500-2.500 10-1.500z" opacity=".95"/><path d="M4 7.500c2.500-.5 5 0 6.500 1M13.500 8.500c1.500-1 4-1.500 6.500-1" stroke="#8dc7f0" stroke-width="1.300" fill="none"/></svg>
+          Education<br>and Literacy</a>
+        <a href="#" class="domain d3">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="14" width="4" height="7" rx=".6"/><rect x="9" y="10" width="4" height="11" rx=".6"/><rect x="15" y="12" width="4" height="9" rx=".6"/><circle cx="19.500" cy="5.500" r="2.800"/><rect x="14" y="3" width="3" height="5" rx=".6"/></svg>
+          Livelihood and<br>Entrepreneurship</a>
+        <a href="#" class="domain d4">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-8-5.500-8-11.200C4 6.800 6.200 5 8.600 5c1.500 0 2.800.8 3.400 2 .6-1.200 1.900-2 3.400-2C17.800 5 20 6.800 20 9.800 20 15.500 12 21 12 21z"/></svg>
+          Health and<br>Wellness</a>
+        <a href="#" class="domain d5">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="6" r="2.800"/><circle cx="5" cy="9" r="2.200"/><circle cx="19" cy="9" r="2.200"/><path d="M12 10.500c-3.500 0-5.500 2-5.500 4.800V18h11v-2.700c0-2.800-2-4.800-5.500-4.800z"/><path d="M5 12c-2.200 0-4 1.300-4 3.300V18h4v-2c0-1.300.5-2.500 1.300-3.300C5.900 12.200 5.500 12 5 12zM19 12c-.5 0-.9.200-1.300.7.800.8 1.300 2 1.300 3.300v2h4v-2.700c0-2-1.800-3.300-4-3.300z"/></svg>
+          Social<br>Development</a>
+        <a href="#" class="domain d6">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7v2h20V7z"/><rect x="4" y="10" width="2.500" height="8"/><rect x="8.500" y="10" width="2.500" height="8"/><rect x="13" y="10" width="2.500" height="8"/><rect x="17.500" y="10" width="2.500" height="8"/><rect x="2" y="19" width="20" height="2.500"/></svg>
+          Institutional<br>Development</a>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="head">
+        <h3><svg width="22" height="22" viewBox="0 0 24 24" fill="#12303f"><path d="M12 2l2.900 6.300 6.800.7-5.100 4.600 1.500 6.700L12 16.800 5.900 20.300l1.500-6.700L2.300 9l6.800-.7z"/></svg>Featured Programs and Projects</h3>
+        <a class="view-all" href="#">View All</a>
+      </div>
+      <div class="carousel">
+        <button class="arrow l" aria-label="Previous" onclick="slide(-1)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#12303f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <div class="track" id="track">
+          <article class="fcard">
+            <div class="thumb ph"><span>Image</span></div>
+            <h5>SKIB Project</h5>
+            <p>School and Community Initiatives for a Better Tomorrow</p>
+          </article>
+          <article class="fcard">
+            <div class="thumb ph"><span>Image</span></div>
+            <h5>SAYAWKA 5.0</h5>
+            <p>Regional Folk Songs Documentation and Preservation</p>
+          </article>
+          <article class="fcard">
+            <div class="thumb ph"><span>Image</span></div>
+            <h5>Livelihood Training Program</h5>
+            <p>Skills for Sustainable Communities</p>
+          </article>
+          <article class="fcard">
+            <div class="thumb ph"><span>Image</span></div>
+            <h5>Community Literacy Initiative</h5>
+            <p>Bridging Education in the Community</p>
+          </article>
+          <article class="fcard">
+            <div class="thumb ph"><span>Image</span></div>
+            <h5>Program Title</h5>
+            <p>Short program description</p>
+          </article>
+        </div>
+        <button class="arrow r" aria-label="Next" onclick="slide(1)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#12303f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+    </section>
+  </div>
+
+  <!-- Right column -->
+  <div class="right">
+    <section class="panel">
+      <div class="head">
+        <h3><svg width="24" height="24" viewBox="0 0 24 24" fill="#12303f"><path d="M3 9v6h3l6 4V5L6 9zM15 8.500a5 5 0 0 1 0 7M17.500 6a8.500 8.500 0 0 1 0 12" stroke="#12303f" stroke-width="1.800" stroke-linecap="round" fill="#12303f"/></svg>Latest News and Announcements</h3>
+        <a class="view-all" href="#">View All</a>
+      </div>
+      <article class="news-item">
+        <div class="thumb ph"></div>
+        <div>
+          <h6>Extension Project Monitoring Scheduled</h6>
+          <time>October 14, 2026</time>
+          <p>Monitoring of SKIB Project on November 4, 2026 at MLG College of Learning, Inc.</p>
+        </div>
+      </article>
+      <article class="news-item">
+        <div class="thumb ph"></div>
+        <div>
+          <h6>ECOS Workshop on Reorientation of Extension...</h6>
+          <time>October 10, 2026</time>
+          <p>Capacity-building activity for faculty and staff.</p>
+        </div>
+      </article>
+      <article class="news-item">
+        <div class="thumb ph"></div>
+        <div>
+          <h6>SAYAWKA 5.0 Implementation</h6>
+          <time>September 28, 2026</time>
+          <p>Documentation and use of local folk songs as learning resources for DepEd teachers.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel docs">
+      <div class="head">
+        <h3><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1668b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h8l5 5v15H6z"/><path d="M14 2v5h5M9 13h7M9 17h7"/></svg>Key Documents</h3>
+        <a class="view-all" href="#">View All</a>
+      </div>
+      <a href="#"><span class="ft pdf">PDF</span>Extension Manual (PDF)</a>
+      <a href="#"><span class="ft doc">W</span>Extension Plan 2025–2029 (DOCX)</a>
+      <a href="#"><span class="ft xls">X</span>Monitoring and Evaluation Tools (XLSX)</a>
+      <a href="#"><span class="ft pdf">PDF</span>Extension Reports (PDF)</a>
+    </section>
+  </div>
+
+</main>
+
+<script>
+  function slide(dir){
+    var t = document.getElementById('track');
+    var card = t.querySelector('.fcard');
+    t.scrollBy({left: dir * (card.offsetWidth + 10), behavior: 'smooth'});
+  }
+</script>
+</body>
+</html>
