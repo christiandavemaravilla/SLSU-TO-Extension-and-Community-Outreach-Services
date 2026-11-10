@@ -65,13 +65,29 @@
     padding-right: var(--pad-x);
   }
 
-  /* ---------- Placeholder images ---------- */
+  /* ---------- Placeholder & Real Images ---------- */
   .ph {
     background:
       linear-gradient(135deg, rgba(255, 255, 255, .38) 25%, transparent 25%) 0 0 / 16px 16px,
       linear-gradient(135deg, #dce5ec, #c5d3de);
     position: relative;
     overflow: hidden;
+    background-size: cover;
+    background-position: center;
+  }
+  .ph img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 2;
+    display: block;
+  }
+  .ph img:not([src]),
+  .ph img[src=""] {
+    display: none;
   }
 
   /* ---------- Top header (Fluid, No Search Bar) ---------- */
@@ -218,7 +234,7 @@
   /* ---------- Hero ---------- */
   .hero {
     position: relative;
-    min-height: clamp(280px, 26vw, 350px);
+    min-height: clamp(290px, 27vw, 350px);
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -229,29 +245,27 @@
     z-index: 3;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 24px;
+    justify-content: flex-start;
     padding-top: clamp(28px, 3.5vw, 44px);
     padding-bottom: clamp(68px, 6vw, 88px);
+    padding-right: 38%;
   }
   .hero-photo {
     position: absolute;
-    left: 32%;
-    right: 10%;
+    left: 28%;
+    right: 18%;
     top: 0;
     bottom: 0;
     z-index: 1;
-  }
-  .hero-photo.ph {
-    background:
-      linear-gradient(135deg, rgba(255, 255, 255, .28) 25%, transparent 25%) 0 0 / 16px 16px,
-      linear-gradient(135deg, #cedbe4, #b6c8d6);
-    -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.85) 22%, #000 100%);
-            mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.85) 22%, #000 100%);
+    background-size: cover;
+    background-position: center;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.85) 20%, #000 100%);
+            mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.85) 20%, #000 100%);
   }
   .hero-photo span, .thumb span {
     position: absolute;
     inset: 0;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -262,14 +276,28 @@
   }
   .hero-curve {
     position: absolute;
-    right: -6%;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 36%;
+    min-width: 340px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px 52px 54px;
+  }
+  .hero-curve::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: -25%;
     top: -32%;
-    width: clamp(320px, 42%, 620px);
     height: 175%;
     background: linear-gradient(155deg, #1b70d0 0%, #0b4f9c 55%, #073570 100%);
     border-radius: 50% 0 0 50% / 50% 0 0 50%;
     opacity: 0.96;
-    z-index: 2;
+    z-index: -1;
     box-shadow: -12px 0 32px rgba(7, 53, 112, 0.18);
   }
   .hero-wave {
@@ -612,7 +640,7 @@
     position: absolute;
     top: 8px;
     left: 8px;
-    z-index: 2;
+    z-index: 3;
     background: rgba(22, 36, 48, 0.78);
     backdrop-filter: blur(4px);
     color: #fff;
@@ -833,11 +861,18 @@
     .site-title {
       width: 100%;
     }
+    .hero-inner {
+      padding-right: var(--pad-x);
+    }
     .hero-photo {
       display: none;
     }
     .hero-curve {
       width: 55%;
+      min-width: 0;
+      pointer-events: none;
+    }
+    .hero-curve::before {
       opacity: 0.18;
     }
     .pillars {
@@ -874,7 +909,10 @@
 <header class="topbar">
   <div class="wrap topbar-inner">
     <div class="brand">
-      <div class="logo ph" role="img" aria-label="University logo placeholder"></div>
+      <div class="logo ph" role="img" aria-label="University logo">
+        <!-- Replace src="" with your university logo image URL or path -->
+        <img src="" alt="SLSU Logo" onerror="this.style.display='none'">
+      </div>
       <div class="uni">Southern Leyte State University<br>Tomas Oppus Campus</div>
       <div class="divider" aria-hidden="true"></div>
       <div class="site-title">
@@ -907,8 +945,11 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="hero-photo ph" role="img" aria-label="Campus building photo placeholder"><span>Hero image placeholder</span></div>
-  <div class="hero-curve" aria-hidden="true"></div>
+  <div class="hero-photo ph" role="img" aria-label="Campus building photo">
+    <!-- Replace src="" below with your hero image URL or filename (use raw.githubusercontent.com URL if embedding HTML in Google Sites) -->
+    <img src="hero.jpg" alt="SLSU Tomas Oppus Campus" onerror="this.style.display='none'">
+    <span>Hero image placeholder</span>
+  </div>
 
   <div class="wrap hero-inner">
     <div class="hero-content">
@@ -920,7 +961,9 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
     </div>
+  </div>
 
+  <div class="hero-curve">
     <div class="pillars" aria-label="Extension Pillars">
       <div class="pillar">
         <div class="ring">
@@ -1185,6 +1228,16 @@
       t.scrollBy({ left: dir * (card.offsetWidth + 14), behavior: 'smooth' });
     }
   }
+
+  // Automatically normalize GitHub blob URLs to raw image URLs if pasted into <img src="">
+  document.querySelectorAll('.ph img').forEach(function (img) {
+    var rawSrc = img.getAttribute('src');
+    if (rawSrc && rawSrc.indexOf('github.com/') !== -1 && rawSrc.indexOf('/blob/') !== -1) {
+      img.src = rawSrc
+        .replace('github.com/', 'raw.githubusercontent.com/')
+        .replace('/blob/', '/');
+    }
+  });
 </script>
 </body>
 </html>
