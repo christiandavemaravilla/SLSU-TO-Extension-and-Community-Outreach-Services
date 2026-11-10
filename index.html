@@ -946,8 +946,7 @@
 <!-- ============ HERO ============ -->
 <section class="hero">
   <div class="hero-photo ph" role="img" aria-label="Campus building photo">
-    <!-- Replace src="" below with your hero image URL or filename (use raw.githubusercontent.com URL if embedding HTML in Google Sites) -->
-    <img src="hero.jpg" alt="SLSU Tomas Oppus Campus" onerror="this.style.display='none'">
+    <img src="hero.jpg" alt="SLSU Tomas Oppus Campus" onload="this.style.display='block';if(this.nextElementSibling)this.nextElementSibling.style.display='none';" onerror="tryAltHero(this)">
     <span>Hero image placeholder</span>
   </div>
 
@@ -1226,6 +1225,18 @@
     var card = t.querySelector('.fcard');
     if (card) {
       t.scrollBy({ left: dir * (card.offsetWidth + 14), behavior: 'smooth' });
+    }
+  }
+
+  // Try common case/extension variations on GitHub Pages (case-sensitive Linux servers)
+  var heroFallbacks = ['Hero.jpg', 'hero.JPG', 'hero.jpeg', 'Hero.jpeg', 'hero.png', 'Hero.png'];
+  function tryAltHero(img) {
+    var idx = parseInt(img.getAttribute('data-try') || '0', 10);
+    if (idx < heroFallbacks.length) {
+      img.setAttribute('data-try', idx + 1);
+      img.src = heroFallbacks[idx];
+    } else {
+      img.style.display = 'none';
     }
   }
 
