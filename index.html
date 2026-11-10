@@ -6,259 +6,966 @@
 <title>Extension and Community Outreach Services | SLSU Tomas Oppus Campus</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Great+Vibes&family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --green:#0b4f9c;
-    --green-dark:#083a78;
-    --green-mid:#1a67c4;
-    --blue:#1668b8;
-    --yellow:#f9c423;
-    --ink:#1b2a35;
-    --muted:#6b7a85;
-    --line:#e3e9ee;
-    --bg:#f4f7f9;
-    --card:#ffffff;
-    --radius:10px;
+  :root {
+    --primary: #0b4f9c;
+    --primary-dark: #073570;
+    --primary-mid: #1668b8;
+    --primary-light: #e8f2fc;
+    --accent: #f9c423;
+    --accent-hover: #eab008;
+    --ink: #162430;
+    --ink-soft: #3b4c59;
+    --muted: #647482;
+    --line: #e2e8f0;
+    --bg: #f4f7fa;
+    --card: #ffffff;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow-sm: 0 1px 3px rgba(15, 35, 55, 0.05), 0 1px 2px rgba(15, 35, 55, 0.03);
+    --shadow-md: 0 8px 20px -4px rgba(11, 79, 156, 0.08), 0 2px 6px -1px rgba(15, 35, 55, 0.04);
+    --pad-x: clamp(16px, 3vw, 40px);
   }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.4}
-  a{color:inherit;text-decoration:none}
-  svg{display:block}
-  .wrap{max-width:1536px;margin:0 auto}
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.45;
+    overflow-x: hidden;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  svg {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .wrap {
+    width: 100%;
+    max-width: 1480px;
+    margin: 0 auto;
+    padding-left: var(--pad-x);
+    padding-right: var(--pad-x);
+  }
 
   /* ---------- Placeholder images ---------- */
-  .ph{
+  .ph {
     background:
-      linear-gradient(135deg,rgba(255,255,255,.35) 25%,transparent 25%) 0 0/16px 16px,
-      linear-gradient(135deg,#d9e2e8,#c4d0d9);
-    position:relative;overflow:hidden;
+      linear-gradient(135deg, rgba(255, 255, 255, .38) 25%, transparent 25%) 0 0 / 16px 16px,
+      linear-gradient(135deg, #dce5ec, #c5d3de);
+    position: relative;
+    overflow: hidden;
   }
 
-  /* ---------- Top header ---------- */
-  .topbar{background:#fff;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 48px}
-  .brand{display:flex;align-items:center;gap:18px;min-width:0}
-  .logo{width:66px;height:66px;border-radius:50%;border:3px solid var(--green);flex:none;background:#eef2f5}
-  .uni{font-family:'Cormorant Garamond',serif;font-variant:small-caps;font-size:19px;line-height:1.15;letter-spacing:.4px;color:#222;white-space:nowrap}
-  .divider{width:2px;height:48px;background:var(--green-dark);margin:0 12px;flex:none}
-  .site-title h1{font-family:'Montserrat',sans-serif;font-weight:700;font-size:28px;letter-spacing:.3px;color:#1a2a33;line-height:1.1}
-  .site-title p{text-align:center;color:#5d6b75;font-size:17px;letter-spacing:.4px;margin-top:4px}
-  .site-title p span{margin:0 10px}
-  .search{display:flex;width:300px;flex:none;border:1px solid #cfd8df;border-radius:8px;overflow:hidden;background:#fff}
-  .search .ico{display:flex;align-items:center;padding:0 10px;color:#7b8892}
-  .search input{flex:1;border:0;outline:0;font:inherit;font-size:14px;padding:12px 0;min-width:0}
-  .search button{border:0;background:var(--blue);color:#fff;width:40px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  /* ---------- Top header (Fluid, No Search Bar) ---------- */
+  .topbar {
+    background: var(--card);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+    padding-top: clamp(12px, 1.5vw, 18px);
+    padding-bottom: clamp(12px, 1.5vw, 18px);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 1.5vw, 18px);
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+  .logo {
+    width: clamp(52px, 5vw, 64px);
+    height: clamp(52px, 5vw, 64px);
+    border-radius: 50%;
+    border: 3px solid var(--primary);
+    background: #eef3f7;
+    box-shadow: 0 2px 8px rgba(11, 79, 156, 0.12);
+    flex: none;
+  }
+  .uni {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-variant: small-caps;
+    font-weight: 700;
+    font-size: clamp(16px, 1.35vw, 20px);
+    line-height: 1.15;
+    letter-spacing: 0.4px;
+    color: var(--ink);
+  }
+  .divider {
+    width: 2px;
+    height: 44px;
+    background: linear-gradient(180deg, transparent, var(--primary), transparent);
+    margin: 0 clamp(4px, 0.8vw, 10px);
+    flex: none;
+  }
+  .site-title {
+    min-width: 0;
+  }
+  .site-title h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: clamp(17px, 1.8vw, 26px);
+    letter-spacing: 0.3px;
+    color: var(--primary-dark);
+    line-height: 1.15;
+  }
+  .motto {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .motto-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: clamp(11.5px, 0.9vw, 13px);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--primary);
+    background: var(--primary-light);
+    padding: 5px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(11, 79, 156, 0.14);
+  }
+  .motto-pill::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
 
-  /* ---------- Nav ---------- */
-  nav{background:var(--green)}
-  nav ul{list-style:none;display:flex;justify-content:space-between;padding:0 48px;max-width:1536px;margin:0 auto}
-  nav li a{display:flex;align-items:center;gap:6px;color:#fff;font-size:16px;padding:18px 14px;position:relative;white-space:nowrap}
-  nav li a.active{font-weight:700}
-  nav li a.active::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:4px;background:var(--yellow);border-radius:3px 3px 0 0}
-  nav li a:hover{background:rgba(255,255,255,.08)}
-  nav .caret{width:10px;height:10px}
+  /* ---------- Navigation ---------- */
+  nav {
+    background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-mid) 100%);
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    box-shadow: 0 2px 10px rgba(7, 53, 112, 0.15);
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: clamp(2px, 0.6vw, 12px);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav ul::-webkit-scrollbar {
+    display: none;
+  }
+  nav li a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: clamp(13.5px, 1vw, 15px);
+    font-weight: 500;
+    padding: 14px clamp(10px, 1.1vw, 16px);
+    position: relative;
+    white-space: nowrap;
+    transition: color 0.15s, background 0.15s;
+  }
+  nav li a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+  }
+  nav li a.active {
+    color: #fff;
+    font-weight: 700;
+  }
+  nav li a.active::after {
+    content: "";
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 0;
+    height: 3.5px;
+    background: var(--accent);
+    border-radius: 3px 3px 0 0;
+  }
+  nav .caret {
+    width: 10px;
+    height: 10px;
+    opacity: 0.8;
+  }
 
   /* ---------- Hero ---------- */
-  .hero{position:relative;height:310px;overflow:hidden;
-    background:linear-gradient(100deg,#eaf4fa 0%,#cfe6f4 45%,#b7d9ee 100%)}
-  .hero-photo{position:absolute;left:34%;right:12%;top:0;bottom:0}
-  .hero-photo.ph{background:
-      linear-gradient(135deg,rgba(255,255,255,.3) 25%,transparent 25%) 0 0/16px 16px,
-      linear-gradient(135deg,#cdd9e0,#b5c5d0);
-    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 100%);
-            mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 100%)}
-  .hero-photo span,.thumb span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#7d8d99;font-size:13px;letter-spacing:.5px}
-  .hero-green{position:absolute;right:-8%;top:-30%;width:42%;height:170%;background:linear-gradient(160deg,#1a6fcf,#0a3f86);border-radius:50% 0 0 50% / 50% 0 0 50%;opacity:.96}
-  .hero-wave{position:absolute;left:0;right:0;bottom:-1px;height:70px}
-  .hero-content{position:relative;z-index:2;padding:36px 48px;max-width:640px}
-  .hero h2{font-family:'Montserrat',sans-serif;font-weight:800;font-size:46px;letter-spacing:.5px;color:var(--green);line-height:1}
-  .hero .script{font-family:'Great Vibes',cursive;font-size:58px;color:var(--green-dark);line-height:1.05;margin:2px 0 6px}
-  .hero p.lead{font-size:18px;color:#273842;max-width:520px;line-height:1.45}
-  .btn{display:inline-flex;align-items:center;gap:10px;margin-top:20px;background:var(--yellow);color:#1b2a35;font-weight:600;padding:12px 26px;border-radius:30px;font-size:16px;box-shadow:0 2px 6px rgba(0,0,0,.15);transition:transform .15s}
-  .btn:hover{transform:translateY(-1px)}
-  .pillars{position:absolute;z-index:3;right:5%;top:0;bottom:0;width:260px;color:#fff;text-align:center;font-weight:500;font-size:15px}
-  .pillar{position:absolute;display:flex;flex-direction:column;align-items:center;gap:8px;line-height:1.15}
-  .pillar .ring{width:66px;height:66px;border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center}
-  .pillar.p1{left:0;top:100px}
-  .pillar.p2{right:0;top:30px}
-  .pillar.p3{right:0;top:160px}
-  .pillar.p3 .ring{border:0;height:50px}
-
-  /* ---------- Stats ---------- */
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:14px 20px 0}
-  .stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:12px 18px;display:flex;align-items:center;gap:18px}
-  .stat .badge{width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;flex:none}
-  .stat h4{font-size:15px;font-weight:500;color:#2d3c46}
-  .stat .num{font-size:30px;font-weight:700;line-height:1.1}
-  .stat small{color:var(--muted);font-size:13px}
-
-  /* ---------- Main grid ---------- */
-  .main{display:grid;grid-template-columns:302px 1fr 452px;gap:12px;padding:12px 20px 40px;align-items:start}
-  .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px}
-  .panel + .panel{margin-top:12px}
-  .panel h3{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:600;color:#12303f}
-  .panel h3 .hi{color:var(--blue)}
-  .panel .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-  .view-all{font-size:12px;color:var(--blue);text-decoration:underline;font-weight:500}
-
-  /* Quick links */
-  .quick h3{margin:4px 0 12px 4px;font-size:18px}
-  .quick a{display:flex;align-items:center;gap:14px;background:#f1f4f8;border-radius:8px;padding:14px 14px;margin-bottom:8px;font-size:15px;color:#22323d;transition:background .15s}
-  .quick a:hover{background:#e4ebf3}
-  .quick a svg{color:var(--blue);flex:none}
-
-  /* Program domains */
-  .domains{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
-  .domain{border-radius:8px;height:114px;padding:10px 4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;font-size:12.5px;line-height:1.2;color:#1f2d36;font-weight:500;transition:transform .15s}
-  .domain:hover{transform:translateY(-2px)}
-  .d1{background:#8fd6a6}.d1 svg{color:#0d6b3a}
-  .d2{background:#8dc7f0}.d2 svg{color:#1862a8}
-  .d3{background:#f8df6f}.d3 svg{color:#c47a0a}
-  .d4{background:#f8a99d}.d4 svg{color:#d62c2c}
-  .d5{background:#cdbaf3}.d5 svg{color:#6a38c2}
-  .d6{background:#8fe0e0}.d6 svg{color:#0a6f78}
-
-  /* Featured */
-  .carousel{position:relative}
-  .track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 30px)/4);gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
-  .track::-webkit-scrollbar{display:none}
-  .fcard{scroll-snap-align:start;min-width:0}
-  .thumb{height:100px;border-radius:6px 6px 0 0}
-  .fcard h5{font-size:14.5px;font-weight:600;margin:8px 0 2px;line-height:1.2}
-  .fcard p{font-size:12.5px;color:var(--muted);line-height:1.3}
-  .arrow{position:absolute;top:50px;width:30px;height:30px;border-radius:50%;background:#fff;border:1px solid #d5dde3;box-shadow:0 1px 4px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2}
-  .arrow.l{left:-10px}.arrow.r{right:-10px}
-
-  /* News */
-  .news-item{display:flex;gap:12px;padding:8px 0;border-bottom:1px solid var(--line)}
-  .news-item:last-child{border:0;padding-bottom:0}
-  .news-item .thumb{width:126px;height:66px;border-radius:4px;flex:none}
-  .news-item h6{font-size:13.5px;font-weight:600;line-height:1.25}
-  .news-item time{display:block;font-size:12.5px;color:var(--muted);margin:2px 0}
-  .news-item p{font-size:12.5px;color:#4b5a65;line-height:1.3}
-
-  /* Documents */
-  .docs a{display:flex;align-items:center;gap:14px;padding:10px 6px;border-bottom:1px solid var(--line);font-size:13.5px}
-  .docs a:last-child{border:0;padding-bottom:2px}
-  .docs a:hover{background:#f6f9fb}
-  .ft{width:20px;height:22px;border-radius:3px;color:#fff;font-size:7px;font-weight:700;display:flex;align-items:flex-end;justify-content:center;padding-bottom:3px;flex:none}
-  .ft.pdf{background:#e5322d}.ft.doc{background:#2b6cd4}.ft.xls{background:#1f8a4c}
-
-  /* ---------- Responsive ---------- */
-  @media (max-width:1280px){
-    .main{grid-template-columns:260px 1fr}
-    .main .right{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .main .right .panel+.panel{margin-top:0}
-    .uni{font-size:16px}.site-title h1{font-size:22px}
-    nav ul{overflow-x:auto;padding:0 20px}
+  .hero {
+    position: relative;
+    min-height: clamp(280px, 26vw, 350px);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(105deg, #eaf4fc 0%, #d2e8f8 46%, #b8daf2 100%);
   }
-  @media (max-width:960px){
-    .topbar{flex-wrap:wrap;padding:14px 20px}
-    .search{width:100%}
-    .divider{display:none}
-    .stats{grid-template-columns:1fr 1fr}
-    .main{grid-template-columns:1fr}
-    .main .right{grid-template-columns:1fr}
-    .domains{grid-template-columns:repeat(3,1fr)}
-    .pillars,.hero-photo{display:none}
-    .hero-green{width:60%;opacity:.25}
-    .hero h2{font-size:34px}.hero .script{font-size:44px}
-    .track{grid-auto-columns:calc((100% - 10px)/2)}
+  .hero-inner {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding-top: clamp(28px, 3.5vw, 44px);
+    padding-bottom: clamp(68px, 6vw, 88px);
   }
-  @media (max-width:560px){
-    .stats{grid-template-columns:1fr}
-    .brand{flex-wrap:wrap}.uni{white-space:normal}
-    .domains{grid-template-columns:repeat(2,1fr)}
-    .track{grid-auto-columns:80%}
+  .hero-photo {
+    position: absolute;
+    left: 32%;
+    right: 10%;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+  .hero-photo.ph {
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, .28) 25%, transparent 25%) 0 0 / 16px 16px,
+      linear-gradient(135deg, #cedbe4, #b6c8d6);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.85) 22%, #000 100%);
+            mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.85) 22%, #000 100%);
+  }
+  .hero-photo span, .thumb span {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7d8c;
+    font-size: 12.5px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+  }
+  .hero-curve {
+    position: absolute;
+    right: -6%;
+    top: -32%;
+    width: clamp(320px, 42%, 620px);
+    height: 175%;
+    background: linear-gradient(155deg, #1b70d0 0%, #0b4f9c 55%, #073570 100%);
+    border-radius: 50% 0 0 50% / 50% 0 0 50%;
+    opacity: 0.96;
+    z-index: 2;
+    box-shadow: -12px 0 32px rgba(7, 53, 112, 0.18);
+  }
+  .hero-wave {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    width: 100%;
+    height: clamp(46px, 5vw, 68px);
+    z-index: 4;
+    pointer-events: none;
+  }
+  .hero-content {
+    max-width: 600px;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--primary);
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(4px);
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(11, 79, 156, 0.15);
+  }
+  .hero h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: clamp(28px, 3.2vw, 46px);
+    letter-spacing: 0.4px;
+    color: var(--primary-dark);
+    line-height: 1.05;
+  }
+  .hero .script {
+    font-family: 'Great Vibes', cursive;
+    font-weight: 400;
+    font-size: clamp(38px, 4.4vw, 58px);
+    background: linear-gradient(95deg, var(--primary-dark) 0%, var(--primary-mid) 75%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: var(--primary-dark);
+    -webkit-text-fill-color: transparent;
+    line-height: 1.08;
+    margin: 0 0 8px;
+    padding: 2px 4px 2px 0;
+    filter: drop-shadow(0 2px 6px rgba(255, 255, 255, 0.75));
+  }
+  .hero p.lead {
+    font-size: clamp(14.5px, 1.15vw, 17px);
+    color: var(--ink-soft);
+    max-width: 500px;
+    line-height: 1.5;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 18px;
+    background: var(--accent);
+    color: var(--ink);
+    font-weight: 700;
+    padding: 11px 24px;
+    border-radius: 999px;
+    font-size: 14.5px;
+    box-shadow: 0 4px 12px rgba(249, 196, 35, 0.35);
+    transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(249, 196, 35, 0.45);
+  }
+
+  /* Hero Pillars */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: clamp(14px, 2vw, 28px);
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    font-size: clamp(12px, 0.95vw, 14px);
+  }
+  .pillar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    line-height: 1.2;
+  }
+  .pillar:nth-child(2) {
+    transform: translateY(-14px);
+  }
+  .pillar .ring {
+    width: clamp(56px, 4.8vw, 68px);
+    height: clamp(56px, 4.8vw, 68px);
+    border: 1.5px solid rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(6px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .pillar:hover .ring {
+    transform: scale(1.06);
+    background: rgba(255, 255, 255, 0.24);
+  }
+
+  /* ---------- Impact Stats ---------- */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: clamp(12px, 1.4vw, 20px);
+    padding-top: 16px;
+    padding-bottom: 8px;
+  }
+  .stat {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .stat:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .stat .badge {
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    flex: none;
+  }
+  .stat h3 {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+  .stat .num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(24px, 2vw, 30px);
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1.15;
+    margin: 2px 0;
+  }
+  .stat small {
+    color: var(--muted);
+    font-size: 12px;
+    display: block;
+  }
+
+  /* ---------- Main Bento Grid ---------- */
+  .main {
+    display: grid;
+    grid-template-columns: minmax(240px, 280px) minmax(0, 1fr) minmax(300px, 380px);
+    gap: clamp(14px, 1.5vw, 20px);
+    padding-top: 12px;
+    padding-bottom: 40px;
+    align-items: start;
+  }
+  .panel {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: clamp(16px, 1.6vw, 22px);
+    box-shadow: var(--shadow-sm);
+  }
+  .panel + .panel {
+    margin-top: clamp(14px, 1.5vw, 20px);
+  }
+  .panel .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .panel h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16.5px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .view-all {
+    font-size: 12.5px;
+    color: var(--primary-mid);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+  }
+  .view-all:hover {
+    text-decoration: underline;
+  }
+
+  /* Quick Links */
+  .quick h2 {
+    margin-bottom: 14px;
+  }
+  .quick-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .quick a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f6f9fc;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    padding: 11px 12px;
+    font-size: 13.8px;
+    font-weight: 500;
+    color: var(--ink);
+    transition: all 0.15s ease;
+  }
+  .quick a:hover {
+    background: var(--primary-light);
+    border-color: rgba(11, 79, 156, 0.2);
+    color: var(--primary-dark);
+    transform: translateX(2px);
+  }
+  .quick a .q-ico {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: #fff;
+    color: var(--primary-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    flex: none;
+  }
+
+  /* Program Domains (3x2 Fluid Grid with Tinted Cards) */
+  .domains {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 12px;
+  }
+  .domain {
+    border-radius: 10px;
+    padding: 14px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13.5px;
+    line-height: 1.25;
+    color: var(--ink);
+    font-weight: 600;
+    border: 1px solid transparent;
+    transition: transform 0.16s ease, box-shadow 0.16s ease;
+  }
+  .domain:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+  }
+  .domain .d-ico {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+  }
+  .d1 { background: #eefaf2; border-color: #c7eed4; }
+  .d1 .d-ico { background: #cff3dc; color: #0d6b3a; }
+  .d2 { background: #eef6fd; border-color: #c8e2fa; }
+  .d2 .d-ico { background: #d3e9fc; color: #155ca0; }
+  .d3 { background: #fef9eb; border-color: #fae7b5; }
+  .d3 .d-ico { background: #fdefc6; color: #b56c06; }
+  .d4 { background: #fef1ef; border-color: #fad2cc; }
+  .d4 .d-ico { background: #fde0dc; color: #c92a2a; }
+  .d5 { background: #f5f0fd; border-color: #e0d2fa; }
+  .d5 .d-ico { background: #eadff9; color: #6735bd; }
+  .d6 { background: #edfafb; border-color: #c2ecef; }
+  .d6 .d-ico { background: #d0f2f4; color: #096972; }
+
+  /* Featured Programs Carousel */
+  .carousel {
+    position: relative;
+  }
+  .track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - 28px) / 3);
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding: 2px 1px 4px;
+  }
+  .track::-webkit-scrollbar {
+    display: none;
+  }
+  .fcard {
+    scroll-snap-align: start;
+    min-width: 0;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  .fcard:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: #cbd5e1;
+  }
+  .fcard .thumb {
+    height: 124px;
+    position: relative;
+  }
+  .fcard .tag {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 2;
+    background: rgba(22, 36, 48, 0.78);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 999px;
+    letter-spacing: 0.3px;
+  }
+  .fcard-body {
+    padding: 12px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .fcard h3 {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.25;
+  }
+  .fcard p {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.35;
+  }
+  .arrow {
+    position: absolute;
+    top: 52px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid var(--line);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    transition: background 0.15s, transform 0.15s;
+  }
+  .arrow:hover {
+    background: var(--primary-light);
+    transform: scale(1.06);
+  }
+  .arrow.l { left: -12px; }
+  .arrow.r { right: -12px; }
+
+  /* Latest News */
+  .news-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .news-item {
+    display: flex;
+    gap: 12px;
+    padding: 11px 6px;
+    border-bottom: 1px solid var(--line);
+    border-radius: 6px;
+    transition: background 0.15s ease;
+  }
+  .news-item:first-child {
+    padding-top: 4px;
+  }
+  .news-item:last-child {
+    border-bottom: 0;
+    padding-bottom: 2px;
+  }
+  .news-item:hover {
+    background: #f8fafc;
+  }
+  .news-item .thumb {
+    width: 108px;
+    height: 72px;
+    border-radius: 8px;
+    flex: none;
+  }
+  .news-item h3 {
+    font-size: 13.8px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .news-item:hover h3 {
+    color: var(--primary-mid);
+  }
+  .news-item time {
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--primary-mid);
+    margin: 3px 0;
+  }
+  .news-item p {
+    font-size: 12.2px;
+    color: var(--muted);
+    line-height: 1.35;
+  }
+
+  /* Key Documents */
+  .docs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .docs a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 10px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink);
+    transition: all 0.15s ease;
+  }
+  .docs a:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    color: var(--primary-mid);
+  }
+  .doc-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+  }
+  .doc-meta {
+    display: block;
+    font-size: 11.5px;
+    font-weight: 400;
+    color: var(--muted);
+  }
+  .ft {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+  }
+  .ft.pdf { background: #dc2626; }
+  .ft.doc { background: #2563eb; }
+  .ft.xls { background: #16a34a; }
+  .dl-ico {
+    color: var(--muted);
+    transition: transform 0.15s, color 0.15s;
+  }
+  .docs a:hover .dl-ico {
+    color: var(--primary-mid);
+    transform: translateY(2px);
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--primary-dark);
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 13px;
+    border-top: 3px solid var(--accent);
+  }
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .footer-inner strong {
+    color: #fff;
+  }
+  .footer-links {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .footer-links a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+
+  /* ---------- Fluid Breakpoints for Google Sites Embeds ---------- */
+  @media (max-width: 1180px) {
+    .main {
+      grid-template-columns: 250px minmax(0, 1fr);
+    }
+    .main .right {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .main .right .panel + .panel {
+      margin-top: 0;
+    }
+    .pillars {
+      gap: 14px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .divider {
+      display: none;
+    }
+    .brand {
+      flex-wrap: wrap;
+    }
+    .site-title {
+      width: 100%;
+    }
+    .hero-photo {
+      display: none;
+    }
+    .hero-curve {
+      width: 55%;
+      opacity: 0.18;
+    }
+    .pillars {
+      display: none;
+    }
+    .main {
+      grid-template-columns: 1fr;
+    }
+    .quick-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    }
+    .track {
+      grid-auto-columns: calc((100% - 14px) / 2);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .motto {
+      width: 100%;
+    }
+    .track {
+      grid-auto-columns: 84%;
+    }
+    .arrow {
+      display: none;
+    }
   }
 </style>
 </head>
-<body>
+<body id="home">
 
 <!-- ============ HEADER ============ -->
 <header class="topbar">
-  <div class="brand">
-    <div class="logo ph" role="img" aria-label="University logo placeholder"></div>
-    <div class="uni">Southern Leyte State University<br>Tomas Oppus Campus</div>
-    <div class="divider"></div>
-    <div class="site-title">
-      <h1>EXTENSION AND COMMUNITY OUTREACH SERVICES</h1>
-      <p>Engage <span>•</span> Empower <span>•</span> Transform</p>
+  <div class="wrap topbar-inner">
+    <div class="brand">
+      <div class="logo ph" role="img" aria-label="University logo placeholder"></div>
+      <div class="uni">Southern Leyte State University<br>Tomas Oppus Campus</div>
+      <div class="divider" aria-hidden="true"></div>
+      <div class="site-title">
+        <h1>EXTENSION AND COMMUNITY OUTREACH SERVICES</h1>
+      </div>
+    </div>
+    <div class="motto" aria-label="Core Values">
+      <span class="motto-pill">Engage</span>
+      <span class="motto-pill">Empower</span>
+      <span class="motto-pill">Transform</span>
     </div>
   </div>
-  <form class="search" onsubmit="return false">
-    <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span>
-    <input type="text" placeholder="Search this site" aria-label="Search this site">
-    <button type="submit" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
-  </form>
 </header>
 
 <!-- ============ NAV ============ -->
-<nav>
-  <ul>
-    <li><a href="#" class="active">Home</a></li>
-    <li><a href="#">About Us <svg class="caret" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3.5l3 3 3-3"/></svg></a></li>
-    <li><a href="#">Programs and Projects <svg class="caret" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3.5l3 3 3-3"/></svg></a></li>
-    <li><a href="#">Extension Quality Management <svg class="caret" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3.5l3 3 3-3"/></svg></a></li>
-    <li><a href="#">Partners and Linkages <svg class="caret" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3.5l3 3 3-3"/></svg></a></li>
-    <li><a href="#">Resources <svg class="caret" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3.5l3 3 3-3"/></svg></a></li>
-    <li><a href="#">Reports <svg class="caret" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3.5l3 3 3-3"/></svg></a></li>
-    <li><a href="#">Contact Us</a></li>
-  </ul>
+<nav aria-label="Primary Navigation">
+  <div class="wrap">
+    <ul>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#domains">About Us <svg class="caret" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3.5l3 3 3-3"/></svg></a></li>
+      <li><a href="#programs">Programs and Projects <svg class="caret" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3.5l3 3 3-3"/></svg></a></li>
+      <li><a href="#quick-links">Extension Quality Management <svg class="caret" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3.5l3 3 3-3"/></svg></a></li>
+      <li><a href="#stats">Partners and Linkages <svg class="caret" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3.5l3 3 3-3"/></svg></a></li>
+      <li><a href="#documents">Resources <svg class="caret" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3.5l3 3 3-3"/></svg></a></li>
+      <li><a href="#news">Reports <svg class="caret" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3.5l3 3 3-3"/></svg></a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+  </div>
 </nav>
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="hero-photo ph" style="background:url('hero.jpg') center/cover no-repeat" role="img" aria-label="SLSU Tomas Oppus campus"></div>
-  <div class="hero-green"></div>
+  <div class="hero-photo ph" role="img" aria-label="Campus building photo placeholder"><span>Hero image placeholder</span></div>
+  <div class="hero-curve" aria-hidden="true"></div>
+
+  <div class="wrap hero-inner">
+    <div class="hero-content">
+      <span class="hero-eyebrow">SLSU Tomas Oppus Outreach Portal</span>
+      <h2>COMMUNITY PARTNERS</h2>
+      <div class="script">for a Better Tomorrow</div>
+      <p class="lead">Building stronger communities through relevant, responsive, and sustainable extension programs.</p>
+      <a class="btn" href="#programs">Explore Programs
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <div class="pillars" aria-label="Extension Pillars">
+      <div class="pillar">
+        <div class="ring">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-9 6-14 15-14 0 9-5 15-13 15"/><path d="M5 19c3-5 6-8 10-10"/></svg>
+        </div>
+        <span>Sustainable<br>Communities</span>
+      </div>
+      <div class="pillar">
+        <div class="ring">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="6" r="2.6"/><circle cx="5.5" cy="9.5" r="2"/><circle cx="18.5" cy="9.5" r="2"/><path d="M12 10c-3 0-5 1.8-5 4.5V17h10v-2.5C17 11.8 15 10 12 10z"/><path d="M5.5 12c-2 0-3.5 1.3-3.5 3.2V17h4v-2.5c0-1 .3-1.9.8-2.6-.4-.1-.8-.1-1.3-.1zM18.5 12c-.5 0-.9 0-1.3.1.5.7.8 1.6.8 2.6V17h4v-1.8c0-1.9-1.5-3.2-3.5-3.2z"/></svg>
+        </div>
+        <span>People<br>Engagement</span>
+      </div>
+      <div class="pillar">
+        <div class="ring">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="14" width="4.5" height="7" rx=".6"/><rect x="9.7" y="10" width="4.5" height="11" rx=".6"/><rect x="16.5" y="6" width="4.5" height="15" rx=".6"/><path d="M4 9l6-4.5 3 2L20 1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span>Inclusive<br>Development</span>
+      </div>
+    </div>
+  </div>
+
   <svg class="hero-wave" viewBox="0 0 1536 70" preserveAspectRatio="none" aria-hidden="true">
     <path d="M0 70V48C140 70 300 66 470 40 600 20 700 18 820 38 960 62 1100 70 1536 56V70Z" fill="#1565c0"/>
-    <path d="M0 70V58C180 74 330 70 520 48 700 28 780 34 900 54 1000 70 1100 70 1536 66V70Z" fill="#fff"/>
+    <path d="M0 70V58C180 74 330 70 520 48 700 28 780 34 900 54 1000 70 1100 70 1536 66V70Z" fill="#f4f7fa"/>
   </svg>
-
-  <div class="hero-content">
-    <h2>COMMUNITY PARTNERS</h2>
-    <div class="script">for a Better Tomorrow</div>
-    <p class="lead">Building stronger communities through relevant, responsive and sustainable extension programs.</p>
-    <a class="btn" href="#">Learn More
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </a>
-  </div>
-
-  <div class="pillars">
-    <div class="pillar p1">
-      <div class="ring"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-9 6-14 15-14 0 9-5 15-13 15"/><path d="M5 19c3-5 6-8 10-10"/></svg></div>
-      Sustainable<br>Communities
-    </div>
-    <div class="pillar p2">
-      <div class="ring" style="background:rgba(255,255,255,.12)"><svg width="38" height="38" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="6" r="2.6"/><circle cx="5.5" cy="9.5" r="2"/><circle cx="18.5" cy="9.5" r="2"/><path d="M12 10c-3 0-5 1.8-5 4.5V17h10v-2.5C17 11.8 15 10 12 10z"/><path d="M5.5 12c-2 0-3.5 1.3-3.5 3.2V17h4v-2.5c0-1 .3-1.9.8-2.6-.4-.1-.8-.1-1.3-.1zM18.5 12c-.5 0-.9 0-1.3.1.5.7.8 1.6.8 2.6V17h4v-1.8c0-1.9-1.5-3.2-3.5-3.2z"/></svg></div>
-      People<br>Engagement
-    </div>
-    <div class="pillar p3">
-      <div class="ring"><svg width="46" height="46" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="14" width="4.5" height="7" rx=".6"/><rect x="9.7" y="10" width="4.5" height="11" rx=".6"/><rect x="16.5" y="6" width="4.5" height="15" rx=".6"/><path d="M4 9l6-4.5 3 2L20 1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      Inclusive<br>Development
-    </div>
-  </div>
 </section>
 
 <!-- ============ STATS ============ -->
-<section class="stats wrap">
+<section class="stats wrap" id="stats" aria-label="Extension Impact Metrics">
   <div class="stat">
-    <div class="badge" style="background:#2f8fe0"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="2.8"/><circle cx="5" cy="9" r="2.2"/><circle cx="19" cy="9" r="2.2"/><path d="M12 11.5c-3.2 0-5.5 2-5.5 4.8V19h11v-2.7c0-2.8-2.3-4.8-5.5-4.8z"/><path d="M5 12c-2.2 0-4 1.4-4 3.5V18h4v-2c0-1.4.5-2.6 1.4-3.5C6 12.2 5.5 12 5 12zM19 12c-.5 0-1 .2-1.4.5.9.9 1.4 2.1 1.4 3.5v2h4v-2.5c0-2.1-1.8-3.5-4-3.5z"/></svg></div>
-    <div><h4>Total Extension Programs</h4><div class="num">24</div><small>as of 2026</small></div>
+    <div class="badge" style="background:linear-gradient(135deg,#2f8fe0,#1668b8)"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="2.8"/><circle cx="5" cy="9" r="2.2"/><circle cx="19" cy="9" r="2.2"/><path d="M12 11.5c-3.2 0-5.5 2-5.5 4.8V19h11v-2.7c0-2.8-2.3-4.8-5.5-4.8z"/><path d="M5 12c-2.2 0-4 1.4-4 3.5V18h4v-2c0-1.4.5-2.6 1.4-3.5C6 12.2 5.5 12 5 12zM19 12c-.5 0-1 .2-1.4.5.9.9 1.4 2.1 1.4 3.5v2h4v-2.5c0-2.1-1.8-3.5-4-3.5z"/></svg></div>
+    <div><h3>Total Extension Programs</h3><div class="num">24</div><small>Active as of 2026</small></div>
   </div>
   <div class="stat">
-    <div class="badge" style="background:#1668b8"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></div>
-    <div><h4>Partner Communities</h4><div class="num">18</div><small>LGUs, Schools, CSOs</small></div>
+    <div class="badge" style="background:linear-gradient(135deg,#1668b8,#0b4f9c)"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></div>
+    <div><h3>Partner Communities</h3><div class="num">18</div><small>LGUs, Schools, CSOs</small></div>
   </div>
   <div class="stat">
-    <div class="badge" style="background:#7a3fc4"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h8l5 5v15H6z"/><path d="M14 2v5h5M9 12h7M9 16h7"/></svg></div>
-    <div><h4>Beneficiaries Reached</h4><div class="num">5,230</div><small>Individuals and Groups</small></div>
+    <div class="badge" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h8l5 5v15H6z"/><path d="M14 2v5h5M9 12h7M9 16h7"/></svg></div>
+    <div><h3>Beneficiaries Reached</h3><div class="num">5,230</div><small>Individuals and Groups</small></div>
   </div>
   <div class="stat">
-    <div class="badge" style="background:#f07a1a"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 11l4-4 4 1 3-2 5 4 4-1"/><path d="M6 7l-4 4 6 7 2-1M22 10l-4 8-4 2-6-5"/><path d="M10 18l2 2"/></svg></div>
-    <div><h4>Active Partners</h4><div class="num">12</div><small>LGUs, NGAs, and Private Sector</small></div>
+    <div class="badge" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 11l4-4 4 1 3-2 5 4 4-1"/><path d="M6 7l-4 4 6 7 2-1M22 10l-4 8-4 2-6-5"/><path d="M10 18l2 2"/></svg></div>
+    <div><h3>Active Partners</h3><div class="num">12</div><small>LGUs, NGAs &amp; Private Sector</small></div>
   </div>
 </section>
 
@@ -266,137 +973,217 @@
 <main class="main wrap">
 
   <!-- Quick Links -->
-  <aside class="panel quick">
-    <h3>
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1668b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></svg>
+  <aside class="panel quick" id="quick-links">
+    <h2>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1668b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></svg>
       Quick Links
-    </h3>
-    <a href="https://sites.google.com/view/eco-sample/quick-links/extension-manual-and-policies" target="_blank" rel="noopener"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5c3-1 6-1 9 1 3-2 6-2 9-1v14c-3-1-6-1-9 1-3-2-6-2-9-1z"/></svg>Extension Manual and Policies</a>
-    <a href="https://sites.google.com/view/eco-sample/quick-links/forms-and-templates" target="_blank" rel="noopener"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h8l5 5v15H6z"/><path d="M9 13h7M9 17h7M9 9h3"/></svg>Forms and Templates</a>
-    <a href="https://sites.google.com/view/eco-sample/quick-links/monitoring-and-evaluation" target="_blank" rel="noopener"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 6-7"/></svg>Monitoring and Evaluation</a>
-    <a href="https://sites.google.com/view/eco-sample/quick-links/training-and-capacity-building" target="_blank" rel="noopener"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="8" r="3.2"/><circle cx="17.5" cy="9" r="2.5"/><path d="M9 12.5c-3.5 0-6 2-6 5V20h12v-2.5c0-3-2.5-5-6-5zM17.5 13c-.7 0-1.3.1-1.9.3 1.2 1 1.9 2.4 1.9 4.2V20h4v-2c0-2.5-1.8-5-4-5z"/></svg>Training and Capacity Building</a>
-    <a href="https://sites.google.com/view/eco-sample/quick-links/community-needs-and-assessment" target="_blank" rel="noopener"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>Community Needs Assessment</a>
-    <a href="https://sites.google.com/view/eco-sample/quick-links/photo-and-video-gallery" target="_blank" rel="noopener"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 4h18v16H3z" opacity=".95"/><circle cx="8.5" cy="9" r="1.8" fill="#f1f4f8"/><path d="M4 19l5.5-6 3.5 4 3-3 4 5z" fill="#f1f4f8"/></svg>Photo and Video Gallery</a>
-    <a href="https://sites.google.com/view/eco-sample/quick-links/announcements" target="_blank" rel="noopener" style="margin-bottom:0"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a1.6 1.6 0 0 1 1.6 1.6v.7C16.4 5 18 7.4 18 10.5V15l2 2.5V19H4v-1.5L6 15v-4.5C6 7.4 7.600 5 10.400 4.300v-.7A1.600 1.600 0 0 1 12 2zm-2 18h4a2 2 0 0 1-4 0z"/></svg>Announcements</a>
+    </h2>
+    <div class="quick-list">
+      <a href="#documents"><span class="q-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5c3-1 6-1 9 1 3-2 6-2 9-1v14c-3-1-6-1-9 1-3-2-6-2-9-1z"/></svg></span>Extension Manual and Policies</a>
+      <a href="#documents"><span class="q-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h8l5 5v15H6z"/><path d="M9 13h7M9 17h7M9 9h3"/></svg></span>Forms and Templates</a>
+      <a href="#documents"><span class="q-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 6-7"/></svg></span>Monitoring and Evaluation</a>
+      <a href="#programs"><span class="q-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="8" r="3.2"/><circle cx="17.5" cy="9" r="2.5"/><path d="M9 12.5c-3.5 0-6 2-6 5V20h12v-2.5c0-3-2.5-5-6-5zM17.5 13c-.7 0-1.3.1-1.9.3 1.2 1 1.9 2.4 1.9 4.2V20h4v-2c0-2.5-1.8-5-4-5z"/></svg></span>Training and Capacity Building</a>
+      <a href="#domains"><span class="q-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></span>Community Needs Assessment</a>
+      <a href="#programs"><span class="q-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 4h18v16H3z" opacity=".95"/><circle cx="8.5" cy="9" r="1.8" fill="#fff"/><path d="M4 19l5.5-6 3.5 4 3-3 4 5z" fill="#fff"/></svg></span>Photo and Video Gallery</a>
+      <a href="#news"><span class="q-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a1.6 1.6 0 0 1 1.6 1.6v.7C16.4 5 18 7.4 18 10.5V15l2 2.5V19H4v-1.5L6 15v-4.5C6 7.4 7.6 5 10.4 4.3v-.7A1.6 1.6 0 0 1 12 2zm-2 18h4a2 2 0 0 1-4 0z"/></svg></span>Announcements</a>
+    </div>
   </aside>
 
   <!-- Center column -->
   <div class="center">
-    <section class="panel">
-      <div class="head"><h3><svg width="22" height="22" viewBox="0 0 24 24" fill="#1668b8"><circle cx="12" cy="6.5" r="3"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M12 11c-3.500 0-6 2.200-6 5V19h12v-3c0-2.800-2.500-5-6-5z"/></svg>Program Domains</h3></div>
+    <section class="panel" id="domains">
+      <div class="head">
+        <h2>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#1668b8"><circle cx="12" cy="6.5" r="3"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M12 11c-3.5 0-6 2.2-6 5V19h12v-3c0-2.8-2.5-5-6-5z"/></svg>
+          Program Domains
+        </h2>
+      </div>
       <div class="domains">
-        <a href="#" class="domain d1">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22v-9"/><path d="M12 13C12 8 8.500 5.500 4 6c0 4.500 3 7.500 8 7zM12 15c0-4 3-7 8-7 0 4.500-3 7.500-8 7z"/><path d="M11 22h2v-8h-2z"/></svg>
-          Environment<br>and Sustainability</a>
-        <a href="#" class="domain d2">
-          <svg width="42" height="42" viewBox="0 0 24 24" fill="currentColor"><path d="M2 5c3.500-1 7-.5 10 1.500V20c-3-2-6.500-2.500-10-1.500zM22 5c-3.500-1-7-.5-10 1.500V20c3-2 6.500-2.500 10-1.500z" opacity=".95"/><path d="M4 7.500c2.500-.5 5 0 6.500 1M13.500 8.500c1.500-1 4-1.500 6.500-1" stroke="#8dc7f0" stroke-width="1.300" fill="none"/></svg>
-          Education<br>and Literacy</a>
-        <a href="#" class="domain d3">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="14" width="4" height="7" rx=".6"/><rect x="9" y="10" width="4" height="11" rx=".6"/><rect x="15" y="12" width="4" height="9" rx=".6"/><circle cx="19.500" cy="5.500" r="2.800"/><rect x="14" y="3" width="3" height="5" rx=".6"/></svg>
-          Livelihood and<br>Entrepreneurship</a>
-        <a href="#" class="domain d4">
-          <svg width="42" height="42" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-8-5.500-8-11.200C4 6.800 6.200 5 8.600 5c1.500 0 2.800.8 3.400 2 .6-1.200 1.900-2 3.400-2C17.800 5 20 6.800 20 9.800 20 15.500 12 21 12 21z"/></svg>
-          Health and<br>Wellness</a>
-        <a href="#" class="domain d5">
-          <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="6" r="2.800"/><circle cx="5" cy="9" r="2.200"/><circle cx="19" cy="9" r="2.200"/><path d="M12 10.500c-3.500 0-5.500 2-5.500 4.800V18h11v-2.700c0-2.800-2-4.800-5.500-4.800z"/><path d="M5 12c-2.200 0-4 1.300-4 3.300V18h4v-2c0-1.300.5-2.500 1.300-3.300C5.900 12.200 5.500 12 5 12zM19 12c-.5 0-.9.200-1.300.7.800.8 1.300 2 1.300 3.300v2h4v-2.700c0-2-1.800-3.300-4-3.300z"/></svg>
-          Social<br>Development</a>
-        <a href="#" class="domain d6">
-          <svg width="42" height="42" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7v2h20V7z"/><rect x="4" y="10" width="2.500" height="8"/><rect x="8.500" y="10" width="2.500" height="8"/><rect x="13" y="10" width="2.500" height="8"/><rect x="17.500" y="10" width="2.500" height="8"/><rect x="2" y="19" width="20" height="2.500"/></svg>
-          Institutional<br>Development</a>
+        <a href="#programs" class="domain d1">
+          <span class="d-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22v-9"/><path d="M12 13C12 8 8.5 5.5 4 6c0 4.5 3 7.5 8 7zM12 15c0-4 3-7 8-7 0 4.5-3 7.5-8 7z"/><path d="M11 22h2v-8h-2z"/></svg></span>
+          <span>Environment &amp; Sustainability</span>
+        </a>
+        <a href="#programs" class="domain d2">
+          <span class="d-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M2 5c3.5-1 7-.5 10 1.5V20c-3-2-6.5-2.5-10-1.5zM22 5c-3.5-1-7-.5-10 1.5V20c3-2 6.5-2.5 10-1.5z" opacity=".95"/></svg></span>
+          <span>Education &amp; Literacy</span>
+        </a>
+        <a href="#programs" class="domain d3">
+          <span class="d-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="14" width="4" height="7" rx=".6"/><rect x="9" y="10" width="4" height="11" rx=".6"/><rect x="15" y="12" width="4" height="9" rx=".6"/><circle cx="19.5" cy="5.5" r="2.8"/><rect x="14" y="3" width="3" height="5" rx=".6"/></svg></span>
+          <span>Livelihood &amp; Entrepreneurship</span>
+        </a>
+        <a href="#programs" class="domain d4">
+          <span class="d-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-8-5.5-8-11.2C4 6.8 6.2 5 8.6 5c1.5 0 2.8.8 3.4 2 .6-1.2 1.9-2 3.4-2C17.8 5 20 6.8 20 9.8 20 15.5 12 21 12 21z"/></svg></span>
+          <span>Health &amp; Wellness</span>
+        </a>
+        <a href="#programs" class="domain d5">
+          <span class="d-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="6" r="2.8"/><circle cx="5" cy="9" r="2.2"/><circle cx="19" cy="9" r="2.2"/><path d="M12 10.5c-3.5 0-5.5 2-5.5 4.8V18h11v-2.7c0-2.8-2-4.8-5.5-4.8z"/></svg></span>
+          <span>Social Development</span>
+        </a>
+        <a href="#programs" class="domain d6">
+          <span class="d-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7v2h20V7z"/><rect x="4" y="10" width="2.5" height="8"/><rect x="8.5" y="10" width="2.5" height="8"/><rect x="13" y="10" width="2.5" height="8"/><rect x="17.5" y="10" width="2.5" height="8"/><rect x="2" y="19" width="20" height="2.5"/></svg></span>
+          <span>Institutional Development</span>
+        </a>
       </div>
     </section>
 
-    <section class="panel">
+    <section class="panel" id="programs">
       <div class="head">
-        <h3><svg width="22" height="22" viewBox="0 0 24 24" fill="#12303f"><path d="M12 2l2.900 6.300 6.800.7-5.100 4.600 1.500 6.700L12 16.800 5.900 20.300l1.500-6.700L2.300 9l6.800-.7z"/></svg>Featured Programs and Projects</h3>
-        <a class="view-all" href="#">View All</a>
+        <h2>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l2.9 6.3 6.8.7-5.1 4.6 1.5 6.7L12 16.8 5.9 20.3l1.5-6.7L2.3 9l6.8-.7z"/></svg>
+          Featured Programs and Projects
+        </h2>
+        <a class="view-all" href="#programs">View All &rarr;</a>
       </div>
       <div class="carousel">
-        <button class="arrow l" aria-label="Previous" onclick="slide(-1)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#12303f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button class="arrow l" aria-label="Previous program" onclick="slide(-1)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#162430" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
         <div class="track" id="track">
-          <article class="fcard">
-            <div class="thumb ph"><span>Image</span></div>
-            <h5>SKIB Project</h5>
-            <p>School and Community Initiatives for a Better Tomorrow</p>
-          </article>
-          <article class="fcard">
-            <div class="thumb ph"><span>Image</span></div>
-            <h5>SAYAWKA 5.0</h5>
-            <p>Regional Folk Songs Documentation and Preservation</p>
-          </article>
-          <article class="fcard">
-            <div class="thumb ph"><span>Image</span></div>
-            <h5>Livelihood Training Program</h5>
-            <p>Skills for Sustainable Communities</p>
-          </article>
-          <article class="fcard">
-            <div class="thumb ph"><span>Image</span></div>
-            <h5>Community Literacy Initiative</h5>
-            <p>Bridging Education in the Community</p>
-          </article>
-          <article class="fcard">
-            <div class="thumb ph"><span>Image</span></div>
-            <h5>Program Title</h5>
-            <p>Short program description</p>
-          </article>
+          <a href="#programs" class="fcard">
+            <div class="thumb ph"><span class="tag">Education</span><span>Image</span></div>
+            <div class="fcard-body">
+              <h3>SKIB Project</h3>
+              <p>School and Community Initiatives for a Better Tomorrow</p>
+            </div>
+          </a>
+          <a href="#programs" class="fcard">
+            <div class="thumb ph"><span class="tag">Culture &amp; Heritage</span><span>Image</span></div>
+            <div class="fcard-body">
+              <h3>SAYAWKA 5.0</h3>
+              <p>Regional Folk Songs Documentation and Preservation</p>
+            </div>
+          </a>
+          <a href="#programs" class="fcard">
+            <div class="thumb ph"><span class="tag">Livelihood</span><span>Image</span></div>
+            <div class="fcard-body">
+              <h3>Livelihood Training Program</h3>
+              <p>Skills and Enterprise Development for Sustainable Communities</p>
+            </div>
+          </a>
+          <a href="#programs" class="fcard">
+            <div class="thumb ph"><span class="tag">Literacy</span><span>Image</span></div>
+            <div class="fcard-body">
+              <h3>Community Literacy Initiative</h3>
+              <p>Bridging Foundational Education in Partner Barangays</p>
+            </div>
+          </a>
+          <a href="#programs" class="fcard">
+            <div class="thumb ph"><span class="tag">Environment</span><span>Image</span></div>
+            <div class="fcard-body">
+              <h3>Green Campus &amp; Coastal Care</h3>
+              <p>Environmental Stewardship and Ecological Restoration Drive</p>
+            </div>
+          </a>
         </div>
-        <button class="arrow r" aria-label="Next" onclick="slide(1)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#12303f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+        <button class="arrow r" aria-label="Next program" onclick="slide(1)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#162430" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
       </div>
     </section>
   </div>
 
   <!-- Right column -->
   <div class="right">
-    <section class="panel">
+    <section class="panel" id="news">
       <div class="head">
-        <h3><svg width="24" height="24" viewBox="0 0 24 24" fill="#12303f"><path d="M3 9v6h3l6 4V5L6 9zM15 8.500a5 5 0 0 1 0 7M17.500 6a8.500 8.500 0 0 1 0 12" stroke="#12303f" stroke-width="1.800" stroke-linecap="round" fill="#12303f"/></svg>Latest News and Announcements</h3>
-        <a class="view-all" href="#">View All</a>
+        <h2>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#1668b8"><path d="M3 9v6h3l6 4V5L6 9z"/><path d="M15 8.5a5 5 0 0 1 0 7M17.5 6a8.5 8.5 0 0 1 0 12" stroke="#1668b8" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+          Latest News &amp; Announcements
+        </h2>
+        <a class="view-all" href="#news">View All &rarr;</a>
       </div>
-      <article class="news-item">
-        <div class="thumb ph"></div>
-        <div>
-          <h6>Extension Project Monitoring Scheduled</h6>
-          <time>October 14, 2026</time>
-          <p>Monitoring of SKIB Project on November 4, 2026 at MLG College of Learning, Inc.</p>
-        </div>
-      </article>
-      <article class="news-item">
-        <div class="thumb ph"></div>
-        <div>
-          <h6>ECOS Workshop on Reorientation of Extension...</h6>
-          <time>October 10, 2026</time>
-          <p>Capacity-building activity for faculty and staff.</p>
-        </div>
-      </article>
-      <article class="news-item">
-        <div class="thumb ph"></div>
-        <div>
-          <h6>SAYAWKA 5.0 Implementation</h6>
-          <time>September 28, 2026</time>
-          <p>Documentation and use of local folk songs as learning resources for DepEd teachers.</p>
-        </div>
-      </article>
+      <div class="news-list">
+        <a href="#news" class="news-item">
+          <div class="thumb ph"><span>Image</span></div>
+          <div>
+            <h3>Extension Project Monitoring Scheduled</h3>
+            <time datetime="2026-10-14">October 14, 2026</time>
+            <p>Monitoring of SKIB Project on November 4, 2026 at MLG College of Learning, Inc.</p>
+          </div>
+        </a>
+        <a href="#news" class="news-item">
+          <div class="thumb ph"><span>Image</span></div>
+          <div>
+            <h3>ECOS Workshop on Extension Reorientation</h3>
+            <time datetime="2026-10-10">October 10, 2026</time>
+            <p>Capacity-building activity for faculty extensionists and staff.</p>
+          </div>
+        </a>
+        <a href="#news" class="news-item">
+          <div class="thumb ph"><span>Image</span></div>
+          <div>
+            <h3>SAYAWKA 5.0 Implementation</h3>
+            <time datetime="2026-09-28">September 28, 2026</time>
+            <p>Documentation and use of local folk songs as learning resources for DepEd teachers.</p>
+          </div>
+        </a>
+      </div>
     </section>
 
-    <section class="panel docs">
+    <section class="panel docs" id="documents">
       <div class="head">
-        <h3><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1668b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h8l5 5v15H6z"/><path d="M14 2v5h5M9 13h7M9 17h7"/></svg>Key Documents</h3>
-        <a class="view-all" href="#">View All</a>
+        <h2>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1668b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h8l5 5v15H6z"/><path d="M14 2v5h5M9 13h7M9 17h7"/></svg>
+          Key Documents
+        </h2>
+        <a class="view-all" href="#documents">View All &rarr;</a>
       </div>
-      <a href="#"><span class="ft pdf">PDF</span>Extension Manual (PDF)</a>
-      <a href="#"><span class="ft doc">W</span>Extension Plan 2025–2029 (DOCX)</a>
-      <a href="#"><span class="ft xls">X</span>Monitoring and Evaluation Tools (XLSX)</a>
-      <a href="#"><span class="ft pdf">PDF</span>Extension Reports (PDF)</a>
+      <div class="docs-list">
+        <a href="#documents">
+          <div class="doc-info">
+            <span class="ft pdf">PDF</span>
+            <div>Extension Manual<span class="doc-meta">Policy &amp; Guidelines • PDF</span></div>
+          </div>
+          <svg class="dl-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+        </a>
+        <a href="#documents">
+          <div class="doc-info">
+            <span class="ft doc">DOC</span>
+            <div>Extension Plan 2025–2029<span class="doc-meta">Strategic Roadmap • DOCX</span></div>
+          </div>
+          <svg class="dl-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+        </a>
+        <a href="#documents">
+          <div class="doc-info">
+            <span class="ft xls">XLS</span>
+            <div>Monitoring &amp; Evaluation Tools<span class="doc-meta">Standardized Matrices • XLSX</span></div>
+          </div>
+          <svg class="dl-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+        </a>
+        <a href="#documents">
+          <div class="doc-info">
+            <span class="ft pdf">PDF</span>
+            <div>Annual Extension Accomplishment Reports<span class="doc-meta">Campus Archive • PDF</span></div>
+          </div>
+          <svg class="dl-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+        </a>
+      </div>
     </section>
   </div>
 
 </main>
 
+<!-- ============ FOOTER ============ -->
+<footer id="contact">
+  <div class="wrap footer-inner">
+    <div>
+      <strong>Southern Leyte State University – Tomas Oppus Campus</strong> &bull; Extension and Community Outreach Services (ECOS)
+    </div>
+    <div class="footer-links">
+      <a href="#home">Back to Top</a>
+      <a href="#programs">Programs</a>
+      <a href="#documents">Resources</a>
+    </div>
+  </div>
+</footer>
+
 <script>
-  function slide(dir){
+  function slide(dir) {
     var t = document.getElementById('track');
     var card = t.querySelector('.fcard');
-    t.scrollBy({left: dir * (card.offsetWidth + 10), behavior: 'smooth'});
+    if (card) {
+      t.scrollBy({ left: dir * (card.offsetWidth + 14), behavior: 'smooth' });
+    }
   }
 </script>
 </body>
